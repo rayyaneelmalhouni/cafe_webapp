@@ -1,0 +1,27 @@
+
+form {
+    flex-wrap: wrap;
+}
+
+.form-group, .checkbox {
+    width: 100%;
+}
+
+.form-group input {
+    width: 250px;
+}
+
+#submit {
+    background-color: #0275d8;
+    color: white;
+    margin-bottom: 20px;
+    transition: 0.25s;
+}
+
+#submit:hover {
+    background-color: #035296;
+}
+
+.help-block {
+    color: #d9534f;
+}
