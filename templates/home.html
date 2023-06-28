@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cafes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.min.css') }}">
+</head>
+<body>
+<div class="container text-center my-4">
+
+<h1 class="">Cafes</h1>
+<a class="btn btn-primary mt-2 px-5" href="{{ url_for('add') }}">Add Cafe</a>
+</div>
+<div class="container" style="display:flex; justify-content: space-around; flex-wrap:wrap;">
+    {% for cafe in cafes %}
+    <div class="card my-2" style="width: 18rem;">
+        <img src="{{ cafe.img_url }}" class="card-img-top" alt="..." width="100%" height="300" style="object-fit:cover;">
+        <div class="card-body">
+            <h5 class="card-title">{{ cafe.name }}</h5>
+            <div class="card-text">
+                <p>Location: {{ cafe.location }}</p>
+                <p>Seats: {{ cafe.seats }}</p>
+                <p>Coffee Price: {{ cafe.coffee_price }}</p>
+                {% if cafe.has_sockets: %}
+                    <p class="badge bg-success">Has Sockets</p>
+                {% else: %}
+                    <p class="badge bg-danger">Has Sockets</p>
+                {% endif %}
+
+                {% if cafe.has_toilet: %}
+                    <p class="badge bg-success">Has Toilet</p>
+                {% else: %}
+                    <p class="badge bg-danger">Has Toilet</p>
+                {% endif %}
+
+                {% if cafe.has_wifi: %}
+                    <p class="badge bg-success">Has Wifi</p>
+                {% else: %}
+                    <p class="badge bg-danger">Has Wifi</p>
+                {% endif %}
+
+                {% if cafe.can_take_calls: %}
+                    <p class="badge bg-success">Can Take Calls</p>
+                {% else: %}
+                    <p class="badge bg-danger">Can Take Calls</p>
+                {% endif %}
+            </div>
+            <a href="{{ cafe.map_url }}" class="btn btn-primary" target="_blank">Location</a>
+            <a href="{{ url_for('delete', cafe_id=cafe.id) }}" class="btn btn-danger" >Delete</a>
+
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+</body>
+</html>
