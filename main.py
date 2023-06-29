@@ -5,6 +5,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, BooleanField, FloatField
 from wtforms.validators import DataRequired
 from flask_bootstrap import Bootstrap
+import os
 
 
 class AddForm(FlaskForm):
@@ -24,8 +25,8 @@ class AddForm(FlaskForm):
 db = SQLAlchemy()
 app = Flask(__name__)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///cafes.db"
-app.config['SECRET_KEY'] = 'qsdkj78evo'
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL", "sqlite:///cafes.db")
+app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 
 bootstrap = Bootstrap(app)
 db.init_app(app)
