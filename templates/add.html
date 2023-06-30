@@ -7,11 +7,11 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 {% endblock %}
 
-{% block title %}Add Movie{% endblock %}
+{% block title %}Add Cafe{% endblock %}
 
 {% block content %}
 <div class="content container" style="">
-    <h1 class="heading">Add a Movie</h1>
+    <h1 class="heading">Add a Cafe</h1>
     {{ wtf.quick_form(form, novalidate=True) }}
 </div>
 {% endblock %}
